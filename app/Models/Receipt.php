@@ -15,7 +15,7 @@ class Receipt extends Model
 
     public function store()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\Store');
     }
 
     public function receipt_items()

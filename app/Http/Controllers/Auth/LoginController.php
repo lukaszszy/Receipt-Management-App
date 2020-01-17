@@ -43,7 +43,7 @@ class LoginController extends Controller
                     'email' => $request->email,
                     'password' => $request->password]))
         {
-            return response()->json(["message " => "Accepted."], 200);
+            return response()->json(["message " => "Accepted.", "user" => Auth::guard('api')->user()], 200);
         }
         else{
             return response()->json(["message " => "Record not found."], 202);

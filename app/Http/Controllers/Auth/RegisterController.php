@@ -90,8 +90,11 @@ class RegisterController extends Controller
         {
             $user = User::create([
             'name' => $request->name,
+            'surname' => $request->surname,
+            'login' => $request->login,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'barcode' => $request->barcode,
         ]);
             return response()->json($user, 201);
         }

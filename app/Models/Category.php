@@ -8,7 +8,7 @@ class Category extends Model
 {
     public function receipt_items()
     {
-        return $this->belongsTo('App\Models\ReceiptItem');
+        return $this->hasMany('App\Models\ReceiptItem');
     }
 
     public function services()

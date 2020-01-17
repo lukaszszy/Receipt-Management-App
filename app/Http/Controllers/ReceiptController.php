@@ -20,7 +20,7 @@ class ReceiptController extends Controller
             'email' => $request->email,
             'password' => $request->password]))
         {
-            return response()->json(Receipt::with('receipt_items')->where('user_id', Auth::guard('api')->user()->id)->get(), 200);
+            return response()->json(Receipt::with('receipt_items','receipt_items.categories')->where('user_id', Auth::guard('api')->user()->id)->get(), 200);
         }
         else{
             return response()->json(["message " => "User auth failed."], 404);
@@ -67,7 +67,7 @@ class ReceiptController extends Controller
             'email' => $request->email,
             'password' => $request->password]))
         {
-            $receipt = Receipt::with('receipt_items')->where('user_id', Auth::guard('api')->user()->id)->get()->find($id);
+            $receipt = Receipt::with('receipt_items','receipt_items.categories')->where('user_id', Auth::guard('api')->user()->id)->get()->find($id);
             if(is_null($receipt)){ return response()->json(["message " => "Record not found."], 404);}
             return response()->json($receipt, 200);
         }
